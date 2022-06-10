@@ -1,0 +1,85 @@
+#CONFIGURANDO E INICIALIZANDO O VAGRANT#
+
+- INSTALAR O VAGRANT E O VIRTUALBOX
+apt -get install virtualbox
+sudo apt -get install virtualbox
+sudo apt -get install vagrant
+
+- NO TERMINAL 
+vagrand --version (ver se a versão está correta)
+
+- CRIAR MÁQUINA VIRTUAL Acessar pasta
+mkdir nomedapasta
+cd nomedapasta
+
+/nomedapasta
+- CRIAR ARQUIVO INDEX HTML
+index.html
+Hello World
+
+- PROCESSO DE CRIAÇÃO DA MÁQUINA
+vagrant init
+mkdir -p /root/projetos/CentOs7
+cd ~/projetos/CentOs7
+
+- CRIAR ARQUIVO COM ESPECIFIÇÕES DO AMBIENTE
+vim vagrantfile
+
+- INICIAR AMBIENTE DE DESENVOLVIMENTO
+vagrant up
+
+- ACESSAR O AMBIENTE VIA TERMINAL
+vagrant ssh
+
+DENTRO DA MÁQUINA VIRTUAL
+cd /vagrant
+ls
+vim index.html
+
+- INICIAR SERVIDOR EM RUBY
+ruby -run -e httpd . -p 3100 (ex de número de uma porta) (não será possível acessar o localhost)
+
+vim vagrantfile (configurar o redirecionamento da porta 3100 para acesso ao localhost)
+
+wq (salvar)
+
+vagrand reload (reiniciar)
+
+vagrant ssh
+
+cd /Vagrant
+
+ruby -e httpd . -p 3100 (será possível acessar o HelloWorld via localhost)
+
+- CONFIGURANDO O CentOS
+
+mkdir -/class_vms
+sudo vagrant init /centos7
+sudo vagrant up
+sudo vagrant ssh
+
+- USUARIOS DA MAQUINA VIRTUAL 
+usermod -a -G vboxusers guilherme 
+usermod -a -G vboxusers rene 
+usermod -a -G vboxusers cristiano 
+usermod -a -G vboxusers kevin 
+usermod -a -G vboxusers mario 
+usermod -a -G vboxusers lucas 
+usermod -a -G vboxusers ioram 
+usermod -a -G vboxusers matheus
+
+COMPARTILHANDO AS PORTAS
+
+- ALTERANDO VANGRANTFILE
+Vagrant.configure(2) do |config|
+config.vm.box = "centos7"
+config.vm.provision :shell, path: "nginx.sh"
+config.vm.network :forwarded_port, guest: 80, host: 8888
+end
+
+- TESTANDO O AMBIENTE TESTAR AMBIENTE Criar arquivo index :
+<title>TESTE</title>
+FUNCIONA!
+
+- CONECTAR A MÁQUINA VIRTUAL
+vagrant rdp

@@ -1,0 +1,41 @@
+CRIANDO UM PROGRAMA PYTHON
+
+NO TERMINAL
+
+INSTALAÇÃO PYTHON
+
+pip install pyinstaller
+
+print (helloworld)
+
+NO TERMINAL OU PROMPT DE COMANDO
+
+python nomedoarquivo.py
+OBTER A MENSAGEM
+
+helloworld
+VER VERSÃO
+
+pyinstaller --version
+PYTHON EM JAVA
+
+- INSTALAÇÃO
+java jython
+
+- ACESSAR DIRETÓRIO
+jython
+
+- INSTALANDO O APACHE ZEPPELIN
+sudo tar xf zeppelin-*-bin-all.tgz -C /opt
+
+- RENOMEAR O DIRETÓRIO
+sudo mv /opt/zeppelin-*-bin-all /opt/zeppelin
+
+- CRIANDO O SYSTEMD
+sudo nano /etc/systemd/system/zeppelin.service
+
+- INICIALIZAÇÃO
+sudo systemctl enable zeppelin
+
+- INICIAR ZEPPELIN
+sudo systemctl start zeppelin

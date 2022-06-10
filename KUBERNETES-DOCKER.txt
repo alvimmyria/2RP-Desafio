@@ -1,0 +1,63 @@
+# Docker
+
+- INSTALAÇÃO
+sudo install docker
+sudo service docker start
+docker --version
+docker run helloworld
+
+- APLICAÇÃO
+cd site\ (entrar na pasta)
+Variável : TWORPTESTE="true100%"
+export VAR="true100%" 
+echo TWORPTEST="true100%"
+
+- CRIANDO DOCKERFILE
+FROM ruby:2.6-alpine
+COPY . /app
+WORKDIR /app
+
+- CRIAR DOCKER HUB IMAGE
+docker build . -t <myria>/dummy-logger:1.0
+docher push <myria>/dummy-logger:1.0
+
+- DOCKERHUB
+dockerfile
+docker build . -t <myria>/dummy-logger:1.0
+docher push <myria>/dummy-logger:1.0
+ 
+- CLUSTER KUBERNETES
+kubectl create -f pod-1.Container1
+k3d cluster create teste-cluster
+
+- ALOCAR A CONFIGURAÇÃO KUBERNETES 
+kubectl create -f pod-1.Container1
+
+- LOGS DA APLICAÇÃO
+kubectl logs --follow dummy-logger
+
+- CRIANDO UM DEPLOYMENT 
+kubectl create deployment Container1 --image=k8s.gcr.io/echoserver:1.4
+
+- VER DEPLOYMENT
+kubectl get deployments
+
+- CRIANDO UM SERVIÇO
+kubectl expose deployment MeuContainer --type=LoadBalancer --port=443 (exemplo de uma porta)
+
+- VER SERVIÇOS
+kubectl get services
+
+- CRIANDO UM SECRET 
+- Armazenar o usuário em um arquivo ./username.txt e a senha em um arquivo ./password.txt na sua máquina local.
+echo -n 'admin' > ./.txt
+echo -n '1f2d1e2e67df' > ./password.txt
+
+- EMPACONTANDO SERVIÇOS DE UMA SECRET 
+kubectl create secret generic db-user-pass \
+--from-file=./MinhaSecret.txt \
+--from-file=./123456.txt
+
+- VERIFICANDO UMA SECRET
+kubectl get secrets
+
